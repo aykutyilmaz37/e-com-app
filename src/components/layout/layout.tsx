@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Header from './header';
 import { Grid, Container } from '@mui/material';
 
@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactElement;
 };
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: FC<Props> = ({ children }) => {
   return (
     <Container maxWidth={false} disableGutters>
       <Grid container>

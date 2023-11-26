@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Stack, Typography } from '@mui/material';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   price: number;
 };
 
-const Price: React.FC<Props> = ({ originalPrice, price }) => {
+const Price: FC<Props> = ({ originalPrice, price }) => {
   return (
     <Stack direction='row' spacing={1}>
       <Typography color='primary' fontSize={14} component='span'>

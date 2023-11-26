@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useFetchSearch from 'services/hooks/useFetchSearch';
 import { GET_PRODUCTS } from 'store/app/types';
@@ -15,8 +15,8 @@ import {
 import { Search as SearchIcon, Clear as ClearIcon } from '@mui/icons-material';
 
 type Props = {
-  handleDrawerClose?:() => void;
-}
+  handleDrawerClose?: () => void;
+};
 
 const StyledSearchButton = styled(Button)`
   width: auto;
@@ -37,7 +37,7 @@ const StyledSearchInput = styled(TextField)`
   }
 `;
 
-const Search: React.FC<Props> = ({handleDrawerClose}) => {
+const Search: FC<Props> = ({ handleDrawerClose }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
@@ -61,7 +61,6 @@ const Search: React.FC<Props> = ({handleDrawerClose}) => {
   };
 
   const closeSearch = () => {
-    setSearchValue('');
     setIsSearchOpen(false);
     handleDrawerClose && handleDrawerClose();
   };

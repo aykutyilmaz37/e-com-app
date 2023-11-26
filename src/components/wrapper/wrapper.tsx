@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, styled } from '@mui/material';
 
 type Props = {
@@ -13,7 +13,7 @@ const StyledWrapper = styled(Box)`
   height: 100vh;
 `;
 
-const Wrapper: React.FC<Props> = ({ children }) => {
+const Wrapper: FC<Props> = ({ children }) => {
   return <StyledWrapper>{children}</StyledWrapper>;
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Stack, Typography, Rating } from '@mui/material';
 import {
   Star as StarIcon,
@@ -9,7 +9,7 @@ type Props = {
   rating: number;
 };
 
-const Review: React.FC<Props> = ({ rating }) => {
+const Review: FC<Props> = ({ rating }) => {
   const [filledStars, setFilledStars] = useState<number>(0);
 
   useEffect(() => {
@@ -30,10 +30,8 @@ const Review: React.FC<Props> = ({ rating }) => {
       <Rating
         value={filledStars}
         max={5}
-        icon={<StarIcon style={{ color: 'darkyellow',fontSize:16 }} />}
-        emptyIcon={
-          <StarOutlineIcon style={{ color: 'grey', fontSize:16 }} />
-        }
+        icon={<StarIcon style={{ color: 'darkyellow', fontSize: 16 }} />}
+        emptyIcon={<StarOutlineIcon style={{ color: 'grey', fontSize: 16 }} />}
         onChange={handleStarHover}
       />
       <Typography ml={0.5} fontSize={16} component='span'>

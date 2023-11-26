@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_PRODUCTS } from 'store/app/types';
 import { RootState } from 'store/rootReducer';
@@ -7,7 +7,7 @@ import { ProductType } from 'types/product';
 import { Grid } from '@mui/material';
 import { DataNotFound, Loading, ProductCard } from 'components';
 
-const ProductList: React.FC = () => {
+const ProductList: FC = () => {
   const products = useSelector((state: RootState) => state.app.products);
   const dispatch = useDispatch();
   const { isLoading } = useFetchProducts({

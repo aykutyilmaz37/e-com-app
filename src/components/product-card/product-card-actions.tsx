@@ -1,12 +1,5 @@
-import React, { useState } from 'react';
-import {
-  Alert,
-  AlertColor,
-  Box,
-  Button,
-  ButtonGroup,
-  Snackbar,
-} from '@mui/material';
+import React, { FC, useState } from 'react';
+import { Box, Button, ButtonGroup } from '@mui/material';
 import {
   Favorite as FavoriteIcon,
   ShoppingCart as ShoppingCartIcon,
@@ -21,15 +14,13 @@ import { ResultMessageType } from 'types/result-message';
 type Props = {
   productId: string;
   isActionsVisible: boolean;
-  setQuantity:(value:any) => void;
+  setQuantity: (value: any) => void;
 };
 
-
-
-const ProductCardActions: React.FC<Props> = ({
+const ProductCardActions: FC<Props> = ({
   productId,
   isActionsVisible,
-  setQuantity
+  setQuantity,
 }) => {
   const fetchCart = useSelector((state: RootState) => state.app.fetchCart);
   const [hasResultMessage, setHasResultMessage] = useState<boolean>(false);
@@ -42,7 +33,7 @@ const ProductCardActions: React.FC<Props> = ({
   const handleAddToCart = async () => {
     return await addToCart(
       {
-        id: productId
+        id: productId,
       },
       {
         onSuccess: (data) => {

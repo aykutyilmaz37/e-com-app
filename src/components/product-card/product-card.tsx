@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ProductType } from 'types/product';
 import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 import ProductImage from './product-image';
@@ -12,7 +12,7 @@ type Props = {
   product: ProductType;
 };
 
-const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCard: FC<Props> = ({ product }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [isActionsVisible, setActionsVisible] = useState<boolean>(false);
 
@@ -56,7 +56,11 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             />
           </Box>
           <Box>
-            <Quantity productId={product.id} quantity={quantity} setQuantity={setQuantity} />
+            <Quantity
+              productId={product.id}
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
           </Box>
         </Stack>
       </CardContent>

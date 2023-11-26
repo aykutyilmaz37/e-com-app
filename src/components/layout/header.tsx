@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import {
   Box,
   Grid,
@@ -12,10 +12,10 @@ import { Search, Cart } from 'components';
 import LOGO from 'assets/logo.png';
 import { Search as SearchIcon } from '@mui/icons-material';
 
-const Header: React.FC = () => {
+const Header: FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);

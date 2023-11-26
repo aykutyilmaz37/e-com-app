@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Alert, AlertColor, Snackbar } from '@mui/material';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   setHasResultMessage: (value: boolean) => void;
 };
 
-const ResultMessage: React.FC<Props> = ({
+const ResultMessage: FC<Props> = ({
   message,
   severity,
   hasResultMessage,

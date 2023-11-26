@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/rootReducer';
 import useMutateAddToCart from 'services/hooks/useMutateAddToCart';
@@ -14,7 +14,7 @@ type Props = {
   setQuantity: (value: any) => void;
 };
 
-const Quantity: React.FC<Props> = ({ productId, quantity, setQuantity }) => {
+const Quantity: FC<Props> = ({ productId, quantity, setQuantity }) => {
   const fetchCart = useSelector((state: RootState) => state.app.fetchCart);
   const [hasResultMessage, setHasResultMessage] = useState<boolean>(false);
   const [resultMessage, setResultMessage] = useState<ResultMessageType>({
