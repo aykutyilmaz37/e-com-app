@@ -9,8 +9,8 @@ E-Com App Uygulamasi
 - Urun listelemede productlarin gorsel linkleri kirik oldugu icin loremflickr ile replace ettim.
 - Uygulamaya girildiginde createsession olusturulmustur ve sessionstorage de bu id tutulmaktadir.
 - Olusturulan session Id yi headers configine ekleyip add-to-cart ve view-cart servisleri kullanima uygun hale getirilmistir.
-- Quantity de ekleme yapildiginda azaltma butonu cikacak sekilde ayarlanmistir.
-- Add to cart ta servis sadece id ye gore 1 adet ekliyor. Ancak kullanim acisindan  ben quantity de aliyormus gibi quantity parametresi de yolladim.
+- Quantity de ekleme yapildiginda azaltma butonu cikacak sekilde ayarlanmistir. ve bunlara tiklandiginda  sepete ekleme cikarma yapilmaktadir.
+- Ayriyeten Add to cart butonu ekledim.
 - Ek olarak view-cart servisi calistirildiktan sonra bunu redux ile state de tuttuk ve toplam quantity sayisini header da sepet ikonu uzerinde gosterdik.
 - Verilen mock apiler kullanildi.
 - Webpack konfigurasyonlari yapildi.

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Alert, AlertColor, Box, Button, ButtonGroup, Snackbar } from '@mui/material';
+import {
+  Alert,
+  AlertColor,
+  Box,
+  Button,
+  ButtonGroup,
+  Snackbar,
+} from '@mui/material';
 import {
   Favorite as FavoriteIcon,
   ShoppingCart as ShoppingCartIcon,
@@ -8,22 +15,21 @@ import {
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/rootReducer';
 import useMutateAddToCart from 'services/hooks/useMutateAddToCart';
+import { ResultMessage } from 'components/result-message';
+import { ResultMessageType } from 'types/result-message';
 
 type Props = {
   productId: string;
   isActionsVisible: boolean;
-  quantity: number;
+  setQuantity:(value:any) => void;
 };
 
-type ResultMessageType = {
-  message: string;
-  severity: AlertColor | undefined;
-}
+
 
 const ProductCardActions: React.FC<Props> = ({
   productId,
   isActionsVisible,
-  quantity,
+  setQuantity
 }) => {
   const fetchCart = useSelector((state: RootState) => state.app.fetchCart);
   const [hasResultMessage, setHasResultMessage] = useState<boolean>(false);
@@ -34,32 +40,23 @@ const ProductCardActions: React.FC<Props> = ({
   const { mutateAsync: addToCart } = useMutateAddToCart();
 
   const handleAddToCart = async () => {
-    if (quantity === 0) {
-      setHasResultMessage(true);
-      setResultMessage({
-        message: 'Please select quantity',
-        severity: 'warning'
-      })
-      return false
-    }
     return await addToCart(
       {
-        id: productId,
-        quantity,
+        id: productId
       },
       {
         onSuccess: (data) => {
           setHasResultMessage(true);
           setResultMessage({
             message: data,
-            severity: 'success'
-          })
+            severity: 'success',
+          });
+          setQuantity((prevQuantity: number) => Math.max(0, prevQuantity + 1));
           fetchCart();
         },
       }
     );
   };
-  const handleCloseResultMessage = () => setHasResultMessage(false);
   return (
     <Box>
       <Box
@@ -90,22 +87,12 @@ const ProductCardActions: React.FC<Props> = ({
           </Button>
         </ButtonGroup>
       </Box>
-      {hasResultMessage && (
-        <Snackbar
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          open={hasResultMessage}
-          autoHideDuration={3000}
-          onClose={handleCloseResultMessage}
-        >
-          <Alert
-            onClose={handleCloseResultMessage}
-            severity={resultMessage.severity}
-            sx={{ width: '100%' }}
-          >
-            {resultMessage.message}
-          </Alert>
-        </Snackbar>
-      )}
+      <ResultMessage
+        hasResultMessage={hasResultMessage}
+        setHasResultMessage={setHasResultMessage}
+        message={resultMessage.message}
+        severity={resultMessage.severity}
+      />
     </Box>
   );
 };

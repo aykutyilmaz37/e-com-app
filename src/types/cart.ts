@@ -1,6 +1,9 @@
 export type AddToCartType = {
     id:string;
-    quantity:number;
+}
+
+export type SubtractFromCart = {
+    id:string;
 }
 
 export type CartType = {

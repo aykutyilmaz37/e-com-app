@@ -13,8 +13,9 @@ type Props = {
 };
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-  const [isActionsVisible, setActionsVisible] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<number>(0);
+  const [isActionsVisible, setActionsVisible] = useState<boolean>(false);
+
   return (
     <Card
       variant='outlined'
@@ -27,7 +28,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         <ProductCardActions
           productId={product.id}
           isActionsVisible={isActionsVisible}
-          quantity={quantity}
+          setQuantity={setQuantity}
         />
       </Box>
 
@@ -55,7 +56,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             />
           </Box>
           <Box>
-            <Quantity quantity={quantity} setQuantity={setQuantity} />
+            <Quantity productId={product.id} quantity={quantity} setQuantity={setQuantity} />
           </Box>
         </Stack>
       </CardContent>
